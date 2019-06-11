@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using DataAccessLibrary.Logic;
 
 namespace DataAccessLibrary.Models
 {
-    class TaskLibraryModel
+    public class TaskLibraryModel
     {
         public int ID { get; set; }
         public string Title { get; set; }
@@ -14,12 +15,24 @@ namespace DataAccessLibrary.Models
         public bool IsDone { get; set; }
     }
 
-    class TaskAccessModel
+    public class TaskAccessModel
     {
-        List<TaskLibraryModel> ListOfTasks { get; set; }
-        public TaskAccessModel()
+        public List<TaskLibraryModel> ListOfTasks()
         {
-            ListOfTasks = new List<TaskLibraryModel>();
+            return SqlDataAccess.TaskQuery();
+        }
+        public int InsertTask(string title, string priority, string descr,
+                              DateTime duedate, bool isDone = false)
+        {
+            TaskLibraryModel model = new TaskLibraryModel
+            {
+                Title = title,
+                Priority = priority,
+                Description = descr,
+                DueDate = duedate,
+                IsDone = isDone
+            };
+            return SqlDataAccess.AddTaskRow(model);
         }
     }
 }

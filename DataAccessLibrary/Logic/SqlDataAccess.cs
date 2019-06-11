@@ -9,15 +9,41 @@ namespace DataAccessLibrary.Logic
 {
     public class SqlDataAccess
     {
-        public SQLiteConnection GetConnection()
+        public static SQLiteConnection GetConnection()
         {
-            var dbPath = Path.GetFullPath(@"~/Databases/todolists.db");
-            return new SQLiteConnection(dbPath);
+            return new SQLiteConnection("Data Source=./.../.../todolists.db; Version = 3; New = False; FailIfMissing = True");
         }
-        public int AddTaskRow()
+        public static int AddTaskRow(TaskLibraryModel model)
         {
-            return 0;
+            using(var conn = GetConnection())
+            {
+                return conn.Insert(model);
+            }
+        }
 
+        public static int UpdateTaskRow(TaskLibraryModel model)
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Update(model);
+            }
+        }
+
+        public static int DeleteTaskRow(int id)
+        {
+            using (var conn = GetConnection())
+            {
+                return conn.Delete(id);
+            }
+        }
+
+        public static List<TaskLibraryModel> TaskQuery()
+        {
+            using(var conn = GetConnection())
+            {
+                var query = conn.Table<TaskLibraryModel>().Where(v => v.IsDone == false);
+                return query.ToList();
+            }
         }
     }
 }
