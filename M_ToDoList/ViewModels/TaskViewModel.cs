@@ -10,7 +10,7 @@ using DataAccessLibrary.Models;
 
 namespace M_ToDoList.ViewModels
 {
-    public class TaskViewModel : Screen
+    public class TaskViewModel : Screen, IChild
     {
         public string TaskTitle { get; set; }
         public string TaskPriority { get; set; }

@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:M_ToDoList.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+        cal:Bind.Model="M_ToDoList.ViewModels.TaskViewModel"
         mc:Ignorable="d"
         Title="TaskView" Height="275" Width="250">
         <Grid>
