@@ -17,7 +17,7 @@ namespace M_ToDoList.Views
     /// <summary>
     /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class TaskView : Window
+    public partial class TaskView : UserControl
     {
         public TaskView()
         {

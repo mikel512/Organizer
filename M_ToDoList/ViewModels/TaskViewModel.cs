@@ -10,13 +10,51 @@ using DataAccessLibrary.Models;
 
 namespace M_ToDoList.ViewModels
 {
-    public class TaskViewModel : Screen, IChild
+    public class TaskViewModel : PropertyChangedBase
     {
-        public string TaskTitle { get; set; }
-        public string TaskPriority { get; set; }
-        public string TaskDescription { get; set; }
-        public DateTime TaskDueDate { get; set; }
-        public bool IsDone { get; set; }
+        private string _taskTitle;
+        private string _taskPriority;
+        private string _taskDescr;
+        private DateTime _dueDate;
+        private bool _isDone;
+        public TaskViewModel() { }
+
+        public string TaskTitle
+        {
+            set
+            {
+                _taskTitle = value;
+                //NotifyOfPropertyChange(() => TaskTitle);
+            }
+        }
+        public string TaskPriority
+        {
+            set
+            {
+                _taskPriority = value;
+            }
+        }
+        public string TaskDescription
+        {
+            set
+            {
+                _taskDescr = value;
+            }
+        }
+        public DateTime TaskDueDate
+        {
+            set
+            {
+                _dueDate = value;
+            }
+        }
+        public bool IsDone
+        {
+            set
+            {
+                _isDone = value;
+            }
+        }
 
     }
 }
