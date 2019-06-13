@@ -5,7 +5,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Databases\todolists.db" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Databases\todolists.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

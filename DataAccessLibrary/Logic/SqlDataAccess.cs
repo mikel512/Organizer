@@ -10,7 +10,8 @@ namespace DataAccessLibrary.Logic
     {
         public SQLiteConnection GetConnection()
         {
-            return new SQLiteConnection("Data Source=./.../.../todolists.db; Version = 3; New = False; FailIfMissing = True");
+            var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Databases\\todolists.db");
+            return new SQLiteConnection(dbPath);
         }
         public int AddTaskRow<T>(T model)
         {
