@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using M_ToDoList.Models;
-using DataAccessLibrary.Models;
 
 namespace M_ToDoList.ViewModels
 {
