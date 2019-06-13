@@ -1,2 +1,2 @@
 # Organizer
-WPF App using MVVM pattern
+.NET Framework 4.7 WPF App using MVVM pattern
