@@ -33,7 +33,7 @@ namespace DataAccessLibrary.Logic
         {
             using (var conn = GetConnection())
             {
-                return conn.Delete(id);
+                return conn.Delete<T>(id);
             }
         }
     }

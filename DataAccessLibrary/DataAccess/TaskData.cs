@@ -23,6 +23,12 @@ namespace DataAccessLibrary.DataAccess
             return sql.DeleteTaskRow<TaskModel>(id);
 
         }
+
+        public int UpdateTask(TaskModel model)
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            return sql.UpdateTaskRow<TaskModel>(model);
+        }
         
         // Gets all rows
         public List<TaskModel> GetAllTasks()
