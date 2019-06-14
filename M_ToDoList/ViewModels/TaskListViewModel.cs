@@ -11,64 +11,24 @@ namespace M_ToDoList.ViewModels
 {
     public class TaskListViewModel : PropertyChangedBase
     {
-        private List<TaskModel> _tasklist;
         private TaskModel _selected;
-        private string _itemPr;
-        private string _itemDescr;
-        private DateTime _itemDate;
         public TaskListViewModel() { }
 
         #region Properties
-        public string ListItemPriority
-        {
-            get { return _itemPr; }
-            set
-            {
-                _itemPr = value;
-                NotifyOfPropertyChange(() => ListItemPriority);
-            }
-        }
-        public string ListItemDescription
-        {
-            get { return _itemDescr; }
-            set
-            {
-                _itemDescr = value;
-                NotifyOfPropertyChange(() => ListItemDescription);
-            }
-        }
-        public DateTime ListItemDate
-        {
-            get { return _itemDate; }
-            set
-            {
-                _itemDate = value;
-                NotifyOfPropertyChange(() => ListItemDate);
-            }
-        }
-        public List<TaskModel> Tasks
+        public BindableCollection<TaskModel> Tasks
         {
             get
             {
                 TaskData query = new TaskData();
-
-                return query.GetAllTasks();
-            }
-            set
-            {
-                _tasklist = value;
-                NotifyOfPropertyChange(() => Tasks);
+                return new BindableCollection<TaskModel>( query.GetAllTasks());
             }
         }
-
         public TaskModel SelectedTask
         {
             get { return _selected; }
             set
             {
-                ListItemPriority = SelectedTask.Priority;
-                ListItemDescription = SelectedTask.Description;
-                ListItemDate = SelectedTask.DueDate;
+                _selected = value;
                 NotifyOfPropertyChange(() => SelectedTask);
             }
         }
