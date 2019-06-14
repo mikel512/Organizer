@@ -11,7 +11,6 @@ namespace todolistTests
     {
         private TaskModel testModel = new TaskModel
         {
-            ID = 0,
             Title = "smokecrack",
             Priority = "Low",
             Description = "do the needly",

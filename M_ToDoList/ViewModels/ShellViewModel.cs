@@ -13,12 +13,10 @@ namespace M_ToDoList.ViewModels
     {
         private TaskViewModel _taskView;
         private TaskListViewModel _taskListView;
-        private CalendarViewModel _calendarView;
         public ShellViewModel()
         {
             TaskView = new TaskViewModel();
             TaskListView = new TaskListViewModel();
-            CalendarView = new CalendarViewModel();
         }
 
         // Bindings for child views
@@ -38,15 +36,6 @@ namespace M_ToDoList.ViewModels
             {
                 _taskListView = value;
                 NotifyOfPropertyChange(() => TaskListView);
-            }
-        }
-        public CalendarViewModel CalendarView
-        {
-            get { return _calendarView; }
-            set
-            {
-                _calendarView = value;
-                NotifyOfPropertyChange(() => CalendarView);
             }
         }
     }

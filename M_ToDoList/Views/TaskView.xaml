@@ -26,22 +26,21 @@
 
             <!-- Add Task Controls -->
             <Label Grid.Row="0" Grid.Column="1" Content="Title:" />
-            <TextBox Name="TaskTitle" Grid.Row="0" Grid.Column="2" Margin="0,2,0,0" Grid.ColumnSpan="2" />
+            <TextBox x:Name="TaskTitle" Grid.Row="0" Grid.Column="2" Margin="0,2,0,0" Grid.ColumnSpan="2" />
 
             <Label Grid.Row="1" Grid.Column="1" Content="Priority:" Margin="0,0,0,0"/>
-            <ComboBox Name="TaskPriority" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" SelectedIndex="0" Margin="0,3,0,0">
-                <ComboBoxItem Foreground="Green">Low</ComboBoxItem>
-                <ComboBoxItem Foreground="Orange">Medium</ComboBoxItem>
-                <ComboBoxItem Foreground="Red">High</ComboBoxItem>
+            <ComboBox x:Name="TaskPriorityStrings" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" SelectedIndex="0" Margin="0,3,0,0">
             </ComboBox>
 
             <Label Grid.Row="2" Grid.Column="1" Content="Description:" Margin="0,0,0,0"/>
-            <TextBox Name="TaskDescription" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" Margin="0,3,0,0" />
+            <TextBox x:Name="TaskDescription" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" Margin="0,3,0,0" />
 
             <Label Grid.Row="4" Grid.Column="1" Content="Due Date:" />
-            <DatePicker Name="TaskDueDate" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Margin="0,3,0,0" />
+            <DatePicker x:Name="TaskDueDate" 
+                        Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" 
+                        Margin="0,3,0,0" />
 
-            <Button Name="AddButton" Grid.Row="5" Grid.Column="3" Content="Add Task" Margin="3,3,1,0" />
-            <Button Name="ClearButton" Grid.Row="5" Grid.Column="2" Content="Clear Forms" Margin="0,3,3,0" />
+            <Button x:Name="AddTask" Grid.Row="5" Grid.Column="3" Content="Add Task" Margin="3,3,1,0" />
+            <Button x:Name="ClearButton" Grid.Row="5" Grid.Column="2" Content="Clear Forms" Margin="0,3,3,0" />
         </Grid>
 </UserControl>

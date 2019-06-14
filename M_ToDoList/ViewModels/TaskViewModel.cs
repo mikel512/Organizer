@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using M_ToDoList.Models;
+using DataAccessLibrary.Models;
+using DataAccessLibrary.DataAccess;
+using System.Windows;
 
 namespace M_ToDoList.ViewModels
 {
@@ -14,37 +16,89 @@ namespace M_ToDoList.ViewModels
         private string _taskTitle;
         private string _taskPriority;
         private string _taskDescr;
-        private DateTime _dueDate;
+        private DateTime _dueDate = DateTime.Today;
         private bool _isDone;
+
+        // Constructor
         public TaskViewModel() { }
 
-        public string TaskTitle
+        #region Methods
+        public int AddTask()
         {
-            set
+            TaskModel addModel = new TaskModel
             {
-                _taskTitle = value;
-                //NotifyOfPropertyChange(() => TaskTitle);
+                Title = _taskTitle,
+                Priority = _taskPriority,
+                Description = _taskDescr,
+                DueDate = _dueDate,
+                IsDone = false
+            };
+
+            TaskData sql = new TaskData();
+            int result = sql.CreateTask(addModel);
+            if(result == 1)
+            {
+                ClearForms();
+                ShowSuccessDiag();
+            }
+            return result;
+        }
+        internal void ClearForms()
+        {
+            TaskTitle = "";
+            TaskDescription = "";
+            TaskDueDate = DateTime.Today;
+        }
+        public void ShowSuccessDiag()
+        {
+            MessageBoxResult result =
+                MessageBox.Show("Task added.");
+        }
+        #endregion
+
+        #region View Bound Properties
+        public BindableCollection<string> TaskPriorityStrings
+        {
+            get
+            {
+                return new BindableCollection<string>(
+                    new string[] { "Low", "Medium", "High" });
             }
         }
-        public string TaskPriority
+        public string SelectedTaskPriorityString
         {
+            get { return _taskPriority; }
             set
             {
                 _taskPriority = value;
+                NotifyOfPropertyChange(() => SelectedTaskPriorityString);
+            }
+        }
+        public string TaskTitle
+        {
+            get { return _taskTitle; }
+            set
+            {
+                _taskTitle = value;
+                NotifyOfPropertyChange(() => TaskTitle);
             }
         }
         public string TaskDescription
         {
+            get { return _taskDescr; }
             set
             {
                 _taskDescr = value;
+                NotifyOfPropertyChange(() => TaskDescription);
             }
         }
         public DateTime TaskDueDate
         {
+            get { return _dueDate; }
             set
             {
                 _dueDate = value;
+                NotifyOfPropertyChange(() => TaskDueDate);
             }
         }
         public bool IsDone
@@ -54,6 +108,7 @@ namespace M_ToDoList.ViewModels
                 _isDone = value;
             }
         }
+        #endregion
 
     }
 }

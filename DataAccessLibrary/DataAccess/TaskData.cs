@@ -15,15 +15,12 @@ namespace DataAccessLibrary.DataAccess
             return sql.AddTaskRow<TaskModel>(model);
 
         }
-
-
         public int DeleteTask(int id)
         {
             SqlDataAccess sql = new SqlDataAccess();
             return sql.DeleteTaskRow<TaskModel>(id);
 
         }
-
         public int UpdateTask(TaskModel model)
         {
             SqlDataAccess sql = new SqlDataAccess();
