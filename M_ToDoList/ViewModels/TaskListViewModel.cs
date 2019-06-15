@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
+using vhCalendar;
 using DataAccessLibrary.Models;
 using DataAccessLibrary.DataAccess;
+using System.Collections.ObjectModel;
 
 namespace M_ToDoList.ViewModels
 {

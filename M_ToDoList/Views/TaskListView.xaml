@@ -53,9 +53,11 @@
         <Button Name="CompleteButton" Grid.Row="1" Grid.Column="0" Margin="3,5,3,5" Content="Mark Completed" />
         <Button Name="DeleteButton" Grid.Row="1" Grid.Column="1" Margin="3,5,3,5" Content="Delete Task"/>
 
-        <vc:Calendar x:Name="CalendarCtrl"
+        <vc:Calendar Name="CalendarCtrl"
                      Grid.Row="0" Grid.Column="2"
-                     Width="300" Height="360">
+                     Width="300" Height="360"
+                     SelectionMode="Multiple" >
+                     
         </vc:Calendar>
     </Grid>
 </UserControl>
