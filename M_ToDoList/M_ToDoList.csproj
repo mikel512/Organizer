@@ -91,9 +91,11 @@
     </Compile>
     <Compile Include="Converters.cs" />
     <Compile Include="Models\TaskModel.cs" />
+    <Compile Include="ViewModels\ExtViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TaskListViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +138,10 @@
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
       <Project>{96c54a59-47fc-434d-9c00-f73751cb4b3d}</Project>
       <Name>DataAccessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FsCalendar\FsCalendar.csproj">
+      <Project>{968182e6-fa10-476f-96d2-0fd1f09549a4}</Project>
+      <Name>FsCalendar</Name>
     </ProjectReference>
     <ProjectReference Include="..\vhCalendar\vhCalendar\vhCalendar.csproj">
       <Project>{f82264b8-4cad-44a6-91be-2979d1e6d0e2}</Project>

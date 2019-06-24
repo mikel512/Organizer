@@ -9,7 +9,7 @@ using M_ToDoList.Views;
 
 namespace M_ToDoList.ViewModels
 {
-    public class ShellViewModel : PropertyChangedBase
+    public class ShellViewModel : ExtViewModel
     {
         private TaskViewModel _taskView;
         private TaskListViewModel _taskListView;

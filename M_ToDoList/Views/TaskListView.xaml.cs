@@ -22,6 +22,7 @@ namespace M_ToDoList.Views
     /// </summary>
     public partial class TaskListView : UserControl
     {
+        #region Constructor
         public TaskListView()
         {
             InitializeComponent();
@@ -33,7 +34,29 @@ namespace M_ToDoList.Views
             {
                 dates.Add(task.DueDate);
             }
-            CalendarCtrl.SelectedDates = dates;
+            //CalendarCtrl.SelectedDates = dates;
         }
+        #endregion
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Subscribes to the view model's RefreshRequested event.
+        /// </summary>
+        private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            var extViewModel = (ExtViewModel)DataContext;
+            extViewModel.RefreshRequested += OnRefreshRequested;
+        }
+
+        /// <summary>
+        /// Refreshes the calendar.
+        /// </summary>
+        private void OnRefreshRequested(object sender, EventArgs e)
+        {
+            this.TaskCalendar.Refresh();
+        }
+
+        #endregion
     }
 }

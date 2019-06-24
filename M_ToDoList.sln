@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vhCalendar", "vhCalendar\vh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todolistTests", "todolistTests\todolistTests.csproj", "{B34947A5-D292-4431-B74D-466BB8A63904}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FsCalendar", "FsCalendar\FsCalendar.csproj", "{968182E6-FA10-476F-96D2-0FD1F09549A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B34947A5-D292-4431-B74D-466BB8A63904}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B34947A5-D292-4431-B74D-466BB8A63904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B34947A5-D292-4431-B74D-466BB8A63904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968182E6-FA10-476F-96D2-0FD1F09549A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968182E6-FA10-476F-96D2-0FD1F09549A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968182E6-FA10-476F-96D2-0FD1F09549A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968182E6-FA10-476F-96D2-0FD1F09549A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

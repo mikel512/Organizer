@@ -11,7 +11,7 @@ using System.Collections.ObjectModel;
 
 namespace M_ToDoList.ViewModels
 {
-    public class TaskListViewModel : PropertyChangedBase
+    public class TaskListViewModel : ExtViewModel
     {
         private TaskModel _selected;
         public TaskListViewModel() { }
