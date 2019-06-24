@@ -9,6 +9,7 @@ namespace DataAccessLibrary.DataAccess
 {
     public class TaskData
     {
+        #region Public Methods
         public int CreateTask(TaskModel model)
         {
             SqlDataAccess sql = new SqlDataAccess();
@@ -42,9 +43,24 @@ namespace DataAccessLibrary.DataAccess
             SqlDataAccess sql = new SqlDataAccess();
             using(var conn = sql.GetConnection())
             {
-                return conn.Table<TaskModel>().Where(v => v.IsDone == false)
+                return conn.Table<TaskModel>()
+                    .Where(v => v.IsDone == false)
+                    .Where(v => v.DueDate > DateTime.Now)
+                    .OrderBy(v => v.DueDate)
                     .ToList();
             }
         }
+        // Gets dates only
+        public List<DateTime> GetUndoneDateTimes()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
+            using (var conn = sql.GetConnection())
+            {
+                return conn.Query<DateTime>(
+                    @"SELECT DueDate 
+                      FROM TaskModel;");
+            } 
+        }
+        #endregion
     }
 }

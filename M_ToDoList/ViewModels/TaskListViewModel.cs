@@ -22,7 +22,8 @@ namespace M_ToDoList.ViewModels
             get
             {
                 TaskData query = new TaskData();
-                return new BindableCollection<TaskModel>( query.GetAllTasks());
+                var tst = new BindableCollection<TaskModel>( query.GetAllTasks());
+                return tst;
             }
         }
         public TaskModel SelectedTask

@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using DataAccessLibrary.Models;
+using DataAccessLibrary.DataAccess;
 
 namespace M_ToDoList
 {
@@ -9,6 +12,7 @@ namespace M_ToDoList
 		// Property variables
 		private DateTime p_DisplayDate;
 		private string[] p_HighlightedDateText;
+        private Dictionary<int, List<DateTime>> _taskListByMonth;
 
 		// Member variables
 		private DateTime m_OldDisplayDate;
@@ -109,9 +113,12 @@ namespace M_ToDoList
 		{
 			// Initialize highlight text array
 			p_HighlightedDateText = new String[31];
+            _taskListByMonth = new Dictionary<int, List<DateTime>>();
 
 			// Set the display date to today
 			p_DisplayDate = DateTime.Today;
+
+            this.SetTaskDictionary();
 
 			// Set month highlighting
 			this.SetMonthHighlighting();
@@ -131,6 +138,25 @@ namespace M_ToDoList
 			}
 		}
 
+        private void SetTaskDictionary()
+        {
+            // Get all date times
+            var connection = new TaskData();
+            List<TaskModel> dateTimes = connection.GetUndoneTasks();
+
+            // Initialize list for each month
+            for(int i = 0; i< 12; i++)
+            {
+                _taskListByMonth[i] = new List<DateTime>();
+            }
+            
+            foreach(var task in dateTimes)
+            {
+                int monthInt = task.DueDate.Month;
+                _taskListByMonth[monthInt].Add(task.DueDate);
+            }
+        }
+
 		/// <summary>
 		/// Sets highlighting for a month.
 		/// </summary>
@@ -143,42 +169,32 @@ namespace M_ToDoList
 			var month = this.DisplayDate.Month;
 			var year = this.DisplayDate.Year;
 			var lastDayOfMonth = DateTime.DaysInMonth(year, month);
+            // Gte list for current month
+            var list = _taskListByMonth[month];
 
 			// Set the highlighted date text
+
 			for (var i = 0; i < 31; i++)
 			{
 				// First set this array element to null
 				p_HighlightedDateText[i] = null;
 
-				/* This demo simply highlights odd dates. So, if the array element represents 
-				 * an even date, we leave the element at its null setting and skip to the next 
-				 * increment of the loop. Note that the array is indexed from zero, while a 
-				 * calendar is indexed from one. That means odd-numbered elements represent 
-				 * even-numbered dates. So, if the index is odd, we skip.  */
-
-				// If index is odd, skip to next
-				if (i%2 == 1) continue;
-
-				/* An element may be out of range for the current month. For example, element
-				 * 30 would represent the 31st, which would be out of range for a month that 
-				 * has only 30 days. If that's the case for the current element, we leave it
-				 * set to null and skip to the next increment of the loop. */
 
 				// If element is out of range, skip to next
 				if (i >= lastDayOfMonth) continue;
 
-				/* Since the array is indexed from zero, and a calendar is indexed from one, 
-				 * we have to add one to the array index to get the calendar day to which it 
-				 * corresponds. All we do in this demo is put the Long Date String is the
-				 * HighlightedDateText array. */
-
 				// Set highlight date text
-				var targetDate = new DateTime(displayYear, displayMonth, i + 1);
-				p_HighlightedDateText[i] = targetDate.ToLongDateString();
+                foreach(var date in list)
+                {
+                    if(i == date.Day - 1)
+                    {
+                        p_HighlightedDateText[i] = date.ToLongDateString();
+                    }
+                }
 			}
 
 			// Refresh the calendar
-			this.RequestRefresh();
+			//this.RequestRefresh();
 		}
 
 		#endregion

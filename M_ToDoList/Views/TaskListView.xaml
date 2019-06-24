@@ -55,15 +55,16 @@
         <Button Name="CompleteButton" Grid.Row="1" Grid.Column="0" Margin="3,5,3,5" Content="Mark Completed" />
         <Button Name="DeleteButton" Grid.Row="1" Grid.Column="1" Margin="3,5,3,5" Content="Delete Task"/>
 
-        <FsControls:FsCalendar x:Name="TaskCalendar" 
-                               DisplayDateStart="{Binding Path=DisplayDateStart, Mode=OneTime}"
-                               DisplayDate="{Binding Path=DisplayDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                               HighlightedDateText="{Binding Path=HighlightedDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                               Grid.Column="2" Grid.Row="0"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Stretch"
-                               IsTodayHighlighted="True"
-                               DateHighlightBrush="PaleGoldenrod" />
+        <Viewbox Width="300" Height="300"
+                 Grid.Column="2" Grid.Row="0">
+            <FsControls:FsCalendar x:Name="TaskCalendar" 
+                                   DisplayDate="{Binding Path=DisplayDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   HighlightedDateText="{Binding Path=HighlightedDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsTodayHighlighted="True"
+                                   DateHighlightBrush="PaleGoldenrod" />
+        </Viewbox>
 
         <!--
         <vc:Calendar Name="CalendarCtrl"
