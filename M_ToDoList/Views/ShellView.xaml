@@ -8,10 +8,9 @@
         xmlns:vc="clr-namespace:vhCalendar;assembly=vhCalendar"
         mc:Ignorable="d"
         d:DataContext="{x:Type model:ShellViewModel}"
-        Title="ShellView" Height="500" Width="900">
+        Title="ShellView" Height="500" Width="850">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="230" />
             <ColumnDefinition Width="600"/>
         </Grid.ColumnDefinitions>
@@ -20,7 +19,7 @@
             <RowDefinition Height="400"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <ContentControl x:Name="TaskView" Grid.Column="1" Grid.Row="1"/>
-        <ContentControl x:Name="TaskListView" Grid.Column="2" Grid.Row="1"/>
+        <ContentControl x:Name="TaskView" Grid.Column="0" Grid.Row="1"/>
+        <ContentControl x:Name="TaskListView" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

@@ -13,11 +13,13 @@ namespace M_ToDoList.ViewModels
 {
     public class TaskViewModel : PropertyChangedBase
     {
+        #region Fields
         private string _taskTitle;
         private string _taskPriority;
         private string _taskDescr;
         private DateTime _dueDate = DateTime.Today;
         private bool _isDone;
+        #endregion
 
         // Constructor
         public TaskViewModel() { }
@@ -56,7 +58,7 @@ namespace M_ToDoList.ViewModels
         }
         #endregion
 
-        #region View Bound Properties
+        #region Properties
         public BindableCollection<string> TaskPriorityStrings
         {
             get

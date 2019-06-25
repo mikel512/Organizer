@@ -50,17 +50,6 @@ namespace DataAccessLibrary.DataAccess
                     .ToList();
             }
         }
-        // Gets dates only
-        public List<DateTime> GetUndoneDateTimes()
-        {
-            SqlDataAccess sql = new SqlDataAccess();
-            using (var conn = sql.GetConnection())
-            {
-                return conn.Query<DateTime>(
-                    @"SELECT DueDate 
-                      FROM TaskModel;");
-            } 
-        }
         #endregion
     }
 }
