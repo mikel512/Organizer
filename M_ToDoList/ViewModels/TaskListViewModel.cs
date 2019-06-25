@@ -14,21 +14,24 @@ namespace M_ToDoList.ViewModels
 {
     public class TaskListViewModel : ExtViewModel
     {
+        #region Fields
+        private BindableCollection<TaskModel> _list;
         private TaskModel _selected;
         private bool _isSelected;
-        private BindableCollection<TaskModel> _list;
+        #endregion
 
-        public TaskListViewModel() { }
+        #region Constructor
+
+        public TaskListViewModel()
+        {
+            this.InitList();
+        }
+        #endregion
 
         #region Properties
         public BindableCollection<TaskModel> Tasks
         {
-            get
-            {
-                TaskData query = new TaskData();
-                var tst = new BindableCollection<TaskModel>( query.GetAllTasks());
-                return tst;
-            }
+            get { return _list; }
         }
         public TaskModel SelectedTask
         {
@@ -38,16 +41,6 @@ namespace M_ToDoList.ViewModels
                 _selected = value;
                 NotifyOfPropertyChange(() => SelectedTask);
             }
-        }
-        public BindableCollection<TaskModel> IsCheckedList
-        {
-            get { return _list; }
-            set
-            {
-                _list = value;
-                NotifyOfPropertyChange(() => IsCheckedList);
-            }
-            
         }
         public bool IsSelected
         {
@@ -62,13 +55,26 @@ namespace M_ToDoList.ViewModels
         #endregion
 
         #region Methods
+        private void InitList()
+        {
+            // Initializes the TaskList collection field
+            TaskData query = new TaskData();
+            _list = new BindableCollection<TaskModel>( query.GetAllTasks());
+
+        }
         public void DeleteButton()
         {
             //List<int> list = new List<int>();
             IEnumerable<int> list = this.Tasks.Where(d => d.IsSelected)
                 .Select(d => (int)d.ID);
+            var sql = new TaskData();
+            foreach(int id in list)
+            {
+                sql.DeleteTask(id);
+            }
+            _list = new BindableCollection<TaskModel>(sql.GetAllTasks());
             
-            MessageBox.Show(list.Count<int>().ToString());
+            // MessageBox.Show(msg);
 
         }
 

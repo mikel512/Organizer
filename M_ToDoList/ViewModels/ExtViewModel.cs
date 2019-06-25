@@ -47,9 +47,7 @@ namespace M_ToDoList
 
 		#region Properties
 
-		/// <summary>
 		/// The DisplayDate in the calendar.
-		/// </summary>
 		public DateTime DisplayDate
 		{
 			get { return p_DisplayDate; }
@@ -62,9 +60,7 @@ namespace M_ToDoList
 			}
 		}
 
-		/// <summary>
 		/// The text to be shown in tool tips for highlighted dates.
-		/// </summary>
 		public string[] HighlightedDateText
 		{
 			get { return p_HighlightedDateText; }
@@ -169,16 +165,15 @@ namespace M_ToDoList
 			var month = this.DisplayDate.Month;
 			var year = this.DisplayDate.Year;
 			var lastDayOfMonth = DateTime.DaysInMonth(year, month);
-            // Gte list for current month
+
+            // Get task list for current month
             var list = _taskListByMonth[month];
 
 			// Set the highlighted date text
-
 			for (var i = 0; i < 31; i++)
 			{
 				// First set this array element to null
 				p_HighlightedDateText[i] = null;
-
 
 				// If element is out of range, skip to next
 				if (i >= lastDayOfMonth) continue;
@@ -192,8 +187,8 @@ namespace M_ToDoList
                     }
                 }
 			}
-
-			// Refresh the calendar
+            // Causes infinite loop:
+            // Refresh the calendar
 			//this.RequestRefresh();
 		}
 
