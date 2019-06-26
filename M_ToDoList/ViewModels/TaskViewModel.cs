@@ -95,7 +95,6 @@ namespace M_ToDoList.ViewModels
             if(result == 1)
             {
                 ClearForms();
-                ShowSuccessDiag();
             }
             return result;
         }

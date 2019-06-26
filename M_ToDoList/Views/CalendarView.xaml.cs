@@ -33,7 +33,7 @@ namespace M_ToDoList.Views
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             var calendarViewModel = (CalendarViewModel)DataContext;
-            calendarViewModel.RefreshRequested += OnRefreshRequested;
+            calendarViewModel.CalendarRefreshRequested += OnRefreshRequested;
         }
 
         /// <summary>

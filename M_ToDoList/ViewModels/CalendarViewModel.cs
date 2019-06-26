@@ -40,7 +40,7 @@ namespace M_ToDoList.ViewModels
 		/// So, it raises this event, and the view subscribes to it. The view invokes any
 		/// refresh method that may be implemented there.
 		/// </remarks>
-		public event EventHandler RefreshRequested;
+		public event EventHandler CalendarRefreshRequested;
 
 		#endregion
 
@@ -123,11 +123,13 @@ namespace M_ToDoList.ViewModels
 		/// <summary>
 		/// Requests a Refresh from the view.
 		/// </summary>
-		private void RequestRefresh()
+		public void CalendarRequestRefresh()
 		{
-			if (this.RefreshRequested != null)
+			if (this.CalendarRefreshRequested != null)
 			{
-				this.RefreshRequested(this, new EventArgs());
+                SetTaskDictionary();
+                SetMonthHighlighting();
+				this.CalendarRefreshRequested(this, new EventArgs());
 			}
 		}
         private void SetTaskDictionary()

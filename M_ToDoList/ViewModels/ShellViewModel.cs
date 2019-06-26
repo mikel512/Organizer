@@ -49,5 +49,17 @@ namespace M_ToDoList.ViewModels
                 NotifyOfPropertyChange(() => CalendarView);
             }
         }
+
+        public void DeleteButton()
+        {
+            ListView.DeleteTasks();
+            CalendarView.CalendarRequestRefresh();
+        }
+        public void AddButton()
+        {
+            TaskView.AddTask();
+            ListView.ListRequestRefresh();
+            CalendarView.CalendarRequestRefresh();
+        }
     }
 }

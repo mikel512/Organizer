@@ -70,7 +70,7 @@ namespace M_ToDoList.ViewModels
 		}
         
         #region Methods
-		private void RequestRefresh()
+		public void ListRequestRefresh()
 		{
 			if (this.ListRefreshRequested != null)
 			{
@@ -89,7 +89,7 @@ namespace M_ToDoList.ViewModels
             _list = ConvertList((sql.GetAllTasks()));
             return _list;
         }
-        public void DeleteButton()
+        public void DeleteTasks()
         {
             IEnumerable<int> list = this.Tasks.Where(d => d.IsSelected)
                 .Select(d => (int)d.ID);
@@ -100,7 +100,7 @@ namespace M_ToDoList.ViewModels
                 sql.DeleteTask(id);
             }
             SetTaskList();
-            this.RequestRefresh();
+            this.ListRequestRefresh();
             // MessageBox.Show(msg);
         }
         private ObservableCollection<TaskModel> ConvertList(List<DataAccessLibrary.Models.TaskModel> toConv)
