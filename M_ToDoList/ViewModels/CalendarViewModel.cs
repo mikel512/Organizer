@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using DataAccessLibrary.Models;
 using DataAccessLibrary.DataAccess;
 
-namespace M_ToDoList
+namespace M_ToDoList.ViewModels
 {
-	public class ExtViewModel : ViewModelBase
+	public class CalendarViewModel : ViewModelBase
 	{
 		#region Fields
 
@@ -21,7 +21,7 @@ namespace M_ToDoList
 
 		#region Constructor
 
-		public ExtViewModel()
+		public CalendarViewModel()
 		{
 			this.Initialize();
 		}
@@ -59,7 +59,6 @@ namespace M_ToDoList
 				base.RaisePropertyChangedEvent("DisplayDate");
 			}
 		}
-
 		/// The text to be shown in tool tips for highlighted dates.
 		public string[] HighlightedDateText
 		{
@@ -72,11 +71,9 @@ namespace M_ToDoList
 				base.RaisePropertyChangedEvent("HighlightedDateText");
 			}
 		}
-
 		#endregion
 
 		#region Event Handlers
-
 		/// <summary>
 		/// Updates the HighlightedDateText property when the calendar is changed to a different month.
 		/// </summary>
@@ -133,7 +130,6 @@ namespace M_ToDoList
 				this.RefreshRequested(this, new EventArgs());
 			}
 		}
-
         private void SetTaskDictionary()
         {
             // Get all date times
@@ -152,7 +148,6 @@ namespace M_ToDoList
                 _taskListByMonth[monthInt].Add(task.DueDate);
             }
         }
-
 		/// <summary>
 		/// Sets highlighting for a month.
 		/// </summary>
@@ -191,7 +186,6 @@ namespace M_ToDoList
             // Refresh the calendar
 			//this.RequestRefresh();
 		}
-
 		#endregion
 	}
 }

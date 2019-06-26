@@ -1,4 +1,5 @@
-﻿using System;
+﻿using M_ToDoList.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,43 +11,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DataAccessLibrary.Models;
-using DataAccessLibrary.DataAccess;
-using System.Collections.ObjectModel;
 
 namespace M_ToDoList.Views
 {
     /// <summary>
-    /// Interaction logic for TaskListView.xaml
+    /// Interaction logic for CalendarView.xaml
     /// </summary>
-    public partial class TaskListView : UserControl
+    public partial class CalendarView : UserControl
     {
-        #region Constructor
-        public TaskListView()
+        public CalendarView()
         {
             InitializeComponent();
-
-            TaskData query = new TaskData();
-            var list = new List<TaskModel>( query.GetAllTasks());
-            var dates = new ObservableCollection<DateTime>();
-            foreach(var task in list)
-            {
-                dates.Add(task.DueDate);
-            }
-            //CalendarCtrl.SelectedDates = dates;
         }
-        #endregion
 
         #region Event Handlers
-
         /// <summary>
         /// Subscribes to the view model's RefreshRequested event.
         /// </summary>
         private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var extViewModel = (ExtViewModel)DataContext;
-            extViewModel.RefreshRequested += OnRefreshRequested;
+            var calendarViewModel = (CalendarViewModel)DataContext;
+            calendarViewModel.RefreshRequested += OnRefreshRequested;
         }
 
         /// <summary>
@@ -56,7 +43,6 @@ namespace M_ToDoList.Views
         {
             this.TaskCalendar.Refresh();
         }
-
         #endregion
     }
 }

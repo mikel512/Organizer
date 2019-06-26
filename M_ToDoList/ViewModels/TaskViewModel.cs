@@ -24,40 +24,6 @@ namespace M_ToDoList.ViewModels
         // Constructor
         public TaskViewModel() { }
 
-        #region Methods
-        public int AddTask()
-        {
-            TaskModel addModel = new TaskModel
-            {
-                Title = _taskTitle,
-                Priority = _taskPriority,
-                Description = _taskDescr,
-                DueDate = _dueDate,
-                IsDone = false
-            };
-
-            TaskData sql = new TaskData();
-            int result = sql.CreateTask(addModel);
-            if(result == 1)
-            {
-                ClearForms();
-                ShowSuccessDiag();
-            }
-            return result;
-        }
-        internal void ClearForms()
-        {
-            TaskTitle = "";
-            TaskDescription = "";
-            TaskDueDate = DateTime.Today;
-        }
-        public void ShowSuccessDiag()
-        {
-            MessageBoxResult result =
-                MessageBox.Show("Task added.");
-        }
-        #endregion
-
         #region Properties
         public BindableCollection<string> TaskPriorityStrings
         {
@@ -109,6 +75,40 @@ namespace M_ToDoList.ViewModels
             {
                 _isDone = value;
             }
+        }
+        #endregion
+
+        #region Methods
+        public int AddTask()
+        {
+            TaskModel addModel = new TaskModel
+            {
+                Title = _taskTitle,
+                Priority = _taskPriority,
+                Description = _taskDescr,
+                DueDate = _dueDate,
+                IsDone = false
+            };
+
+            TaskData sql = new TaskData();
+            int result = sql.CreateTask(addModel);
+            if(result == 1)
+            {
+                ClearForms();
+                ShowSuccessDiag();
+            }
+            return result;
+        }
+        internal void ClearForms()
+        {
+            TaskTitle = "";
+            TaskDescription = "";
+            TaskDueDate = DateTime.Today;
+        }
+        public void ShowSuccessDiag()
+        {
+            MessageBoxResult result =
+                MessageBox.Show("Task added.");
         }
         #endregion
 

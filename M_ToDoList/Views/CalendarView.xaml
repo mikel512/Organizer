@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="M_ToDoList.Views.CalendarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:FsControls="clr-namespace:FsControls;assembly=FsCalendar"
+             xmlns:local="clr-namespace:M_ToDoList.Views"
+             mc:Ignorable="d" 
+             DataContextChanged="OnDataContextChanged"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Viewbox Width="300" Height="300"
+                 Grid.Column="0" Grid.Row="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center">
+            <FsControls:FsCalendar x:Name="TaskCalendar" 
+                                   DisplayDate="{Binding Path=DisplayDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   HighlightedDateText="{Binding Path=HighlightedDateText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsTodayHighlighted="True"
+                                   DateHighlightBrush="PaleGoldenrod" />
+        </Viewbox>
+            
+    </Grid>
+</UserControl>

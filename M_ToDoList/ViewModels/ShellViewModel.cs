@@ -9,14 +9,16 @@ using M_ToDoList.Views;
 
 namespace M_ToDoList.ViewModels
 {
-    public class ShellViewModel : ExtViewModel
+    public class ShellViewModel : ListViewModel
     {
         private TaskViewModel _taskView;
-        private TaskListViewModel _taskListView;
+        private ListViewModel _taskListView;
+        private CalendarViewModel _calendarView;
         public ShellViewModel()
         {
             TaskView = new TaskViewModel();
-            TaskListView = new TaskListViewModel();
+            ListView = new ListViewModel();
+            CalendarView = new CalendarViewModel();
         }
 
         // Bindings for child views
@@ -29,13 +31,22 @@ namespace M_ToDoList.ViewModels
                 NotifyOfPropertyChange(() => TaskView);
             }
         }
-        public TaskListViewModel TaskListView
+        public ListViewModel ListView
         {
             get { return _taskListView; }
             set
             {
                 _taskListView = value;
-                NotifyOfPropertyChange(() => TaskListView);
+                NotifyOfPropertyChange(() => ListView);
+            }
+        }
+        public CalendarViewModel CalendarView
+        {
+            get { return _calendarView; }
+            set
+            {
+                _calendarView = value;
+                NotifyOfPropertyChange(() => CalendarView);
             }
         }
     }
