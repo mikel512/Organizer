@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Caliburn.Micro;
-using vhCalendar;
 using M_ToDoList.Models;
 using DataAccessLibrary.DataAccess;
 using System.Collections.ObjectModel;
